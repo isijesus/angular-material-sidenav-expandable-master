@@ -1,0 +1,67 @@
+<mat-sidenav-container autosize >
+  <mat-sidenav  #sidenav mode="side" opened="isExpanded" (mouseenter)="handleSidebarToggle(true)" (mouseleave)="handleSidebarToggle(false)">
+    <mat-nav-list>
+
+      <mat-list-item style="margin-bottom: 15px !important;"> 
+        <img mat-card-image src="../../../../assets/img/logo.png">
+        <strong style="margin-left: 40px;" *ngIf="isExpanded" class="menu-item">eTrusco</strong>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item [routerLink]="['/dashboard']" [routerLinkActive]="'active'" (click)="title='Dashboard'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>home</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Dashboard</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/providers']" [routerLinkActive]="'active'"  (click)="title='Proveedores'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>groups</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Proveedores</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/products']" [routerLinkActive]="'active'"  (click)="title='Productos'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>hive</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Productos</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/clients']" [routerLinkActive]="'active'"  (click)="title='Clientes'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>contacts</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Clientes</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/orders']" [routerLinkActive]="'active'"  (click)="title='Compras'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>shopping_cart</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Compras</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/purchases']" [routerLinkActive]="'active'"  (click)="title='Ventas'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>post_add</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Ventas</span>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item [routerLink]="['/email']" [routerLinkActive]="'active'"  (click)="title='Email'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>email</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Email</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/info']" [routerLinkActive]="'active'"  (click)="title='Configuración'">
+        <mat-icon class="icon-display" [ngClass]="{ 'min-size': isExpanded }" mat-list-icon>settings</mat-icon>
+        <span *ngIf="isExpanded" class="menu-item">Configuración</span>
+      </mat-list-item>
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Content - rendered Content for the current router path into the <router-outlet>, e.g. /dashboard or /info-->
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <h4>{{title}}</h4>
+      <mat-icon class="flexExpand icon-display" mat-list-icon>logout</mat-icon>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

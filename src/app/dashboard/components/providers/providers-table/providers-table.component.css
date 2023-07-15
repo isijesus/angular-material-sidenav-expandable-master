@@ -1,0 +1,16 @@
+mat-grid-tile {
+    /* background: lightblue; */
+    border: 1px solid #aeb0b3 !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+  }
+  
+  mat-grid-list{
+    margin: 15px !important;
+  }
+  
+  .icon-display {
+    transform: scale(2) !important;
+    color: #165ea6 !important;
+  }

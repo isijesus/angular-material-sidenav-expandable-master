@@ -1,0 +1,41 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 0rem;
+}
+.grid-area {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2em;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 0rem;
+}
+
+.left{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 2em;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 0rem;
+}
+
+table {
+    width: 90%;
+    margin:1rem auto;
+ }
+
+ .contenedor {
+    /* display: flex;
+    flex-direction: column;
+    margin:1rem auto; */
+    /* max-width: 90%; */
+    /* box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75); */
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+    

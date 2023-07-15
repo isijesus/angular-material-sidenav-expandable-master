@@ -1,0 +1,161 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Seleccione los clientes</ng-template>
+      <!-- <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field> -->
+
+
+      <mat-accordion>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header style="background-color: #005691!important;">
+            <mat-panel-title>
+
+            </mat-panel-title>
+            <mat-panel-description>
+              Seleccione sus filtros
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+
+      <div class="table" style="margin-top: 1rem;">
+        <table mat-table [dataSource]="dataSource" class="demo-table mat-elevation-z8">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Población </th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
+
+      </div>
+
+      <div class="left" dir="rtl">
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Genere un correo</ng-template>
+
+      <mat-form-field style="width: 100%;">
+        <mat-label>Seleccione un diseño almacenado</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <mat-grid-list cols="5" rowHeight="2:1" gutterSize="15px">
+                <mat-grid-tile>27 Proveedores</mat-grid-tile>
+                <mat-grid-tile>130 Productos</mat-grid-tile>
+                <mat-grid-tile>500 Clientes</mat-grid-tile>
+                <mat-grid-tile>2300 Compras</mat-grid-tile>
+                <mat-grid-tile>12.500 Ventas</mat-grid-tile>
+              </mat-grid-list> -->
+
+      <!-- <canvas id="canvas" width="500" height="500"></canvas> -->
+      <app-new-email></app-new-email>
+
+      <div class="left" dir="rtl">
+        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button matStepperPrevious>Anterior</button>
+      </div>
+
+    </form>
+  </mat-step>
+
+
+
+  <mat-step>
+    <ng-template matStepLabel>Resumen</ng-template>
+    <!-- ...... -->
+
+    <div>
+      <!-- <br><br> -->
+
+      <div class="grid">
+        <label for="">Clientes</label>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="primary" selected>
+            Primary theme chip
+          </mat-chip>
+          <mat-chip color="primary" selected>
+            Primary theme chip
+          </mat-chip>
+          <mat-chip color="primary" selected>
+            Primary theme chip
+          </mat-chip>
+
+        </mat-chip-list>
+      </div>
+
+      <div class="grid">
+        <label for="">Asunto</label>
+      </div>
+
+      <div class="grid">
+        <label for="">Plantilla</label>
+      </div>
+
+
+    </div>
+
+    <!-- ....... -->
+    <div class="left" dir="rtl">
+      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      <button mat-button>Enviar</button>
+      <button mat-button matStepperPrevious>Anterior</button>
+    </div>
+  </mat-step>
+</mat-stepper>

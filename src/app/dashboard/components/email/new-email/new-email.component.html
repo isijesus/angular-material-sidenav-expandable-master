@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="col-12" style="text-align: right;">
+        <!-- <button mat-button (click)="exportHtml()">Export</button> -->
+        <button mat-button (click)="editorLoaded($event)">Clear</button>
+        <button mat-button (click)="saveDesign()">Save Design</button>
+    </div>
+    <email-editor [options]="options" [appearance]="appearance()" (loaded)="editorLoaded($event)"
+        (ready)="editorReady($event)"></email-editor>
+</div>
